@@ -1,0 +1,74 @@
+设置centos7环境变量locale-utf8-20180806
+###
+######
+整个系统 使用的 Locale 可以通过创建或编辑 /etc/locale.conf 来设置,或者通过 localectl 设置:
+# localectl set-locale LANG=en_US.UTF-8
+##########
+直接修改 /etc/locale.conf
+ LANG=en_US.UTF-8
+ ##########
+ 修改为中文
+ # export=LANG=zh_CN.UTF-8
+ 修改为英文
+ ]# export=LANG=en_US.UTF-8
+ ##########
+
+##
+
+
+
+@#####
+https://wiki.archlinux.org/index.php/Locale_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+
+####
+查看环境是中文还是英文
+
+# cat /etc/locale.conf
+LANG="zh_CN.UTF-8"
+环境是中文
+
+]# locale
+LANG=zh_CN.UTF-8
+LC_CTYPE="zh_CN.UTF-8"
+LC_NUMERIC="zh_CN.UTF-8"
+LC_TIME="zh_CN.UTF-8"
+LC_COLLATE="zh_CN.UTF-8"
+LC_MONETARY="zh_CN.UTF-8"
+LC_MESSAGES="zh_CN.UTF-8"
+LC_PAPER="zh_CN.UTF-8"
+LC_NAME="zh_CN.UTF-8"
+LC_ADDRESS="zh_CN.UTF-8"
+LC_TELEPHONE="zh_CN.UTF-8"
+LC_MEASUREMENT="zh_CN.UTF-8"
+LC_IDENTIFICATION="zh_CN.UTF-8"
+LC_ALL=
+环境为中文
+
+#######
+2.
+########
+
+设置 locale
+想要显示正在使用的 Locale 和相关的环境变量，运行:
+
+$ locale
+locale.conf 文件存放如何使用和选择不同的 Locale 相关的环境变量.一行一个,例如:
+
+locale.conf
+LANG=en_AU.UTF-8
+LC_COLLATE=C
+LC_TIME=en_DK.UTF-8
+
+
+
+
+
+
+和 Locale 相关的变量也能像其他的 环境变量 一样传递给其它程序.
+
+例如在开发时进行测试时,可以这样运行:
+
+$ LANG="en_US.UTF-8" ./my_application.sh
+类似的,也可以通过设置环境变量让当前 shell中运行的程序使用特定的 Locale,(例如安装系统时):
+
+$ export LANG="en_AU.UTF-8"
